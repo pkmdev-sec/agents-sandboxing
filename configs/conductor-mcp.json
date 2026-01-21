@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "aso": {
+      "command": "/usr/local/bin/aso",
+      "args": ["mcp", "serve"],
+      "env": {}
+    }
+  }
+}
