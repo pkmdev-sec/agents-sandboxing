@@ -1,0 +1,26 @@
+# Build artifacts
+bin/
+aso
+*.exe
+
+# Test coverage
+coverage.out
+coverage.html
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+excalidraw.log
+
+# Temporary files
+*.tmp
+*.bak
