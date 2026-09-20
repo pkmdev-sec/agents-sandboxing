@@ -5,8 +5,8 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/agent-sandbox-orchestrator/aso/internal/agent"
-	"github.com/agent-sandbox-orchestrator/aso/internal/container"
+	"github.com/pkmdev-sec/agents-sandboxing/internal/agent"
+	"github.com/pkmdev-sec/agents-sandboxing/internal/container"
 	"github.com/spf13/cobra"
 )
 
@@ -26,8 +26,7 @@ var spawnCmd = &cobra.Command{
 	Short: "Spawn a new sandboxed agent",
 	Long: `Spawn a new agent in an isolated container.
 
-The agent runs with its own context window and token budget,
-completely isolated from the main session.
+The agent runs as a separate Claude Code process inside a container.
 
 Supports both Apple container and Docker runtimes.`,
 	Example: `  # Spawn an Explore agent (auto-detect runtime)

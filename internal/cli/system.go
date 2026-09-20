@@ -3,7 +3,7 @@ package cli
 import (
 	"fmt"
 
-	"github.com/agent-sandbox-orchestrator/aso/internal/container"
+	"github.com/pkmdev-sec/agents-sandboxing/internal/container"
 	"github.com/spf13/cobra"
 )
 

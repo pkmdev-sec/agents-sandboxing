@@ -5,8 +5,6 @@
 # Configuration
 LOG_DIR="${LOG_DIR:-/var/log/agent}"
 OUTPUT_LOG="${LOG_DIR}/output.log"
-SUMMARY_FILE="${LOG_DIR}/summary.txt"
-ERROR_LOG="${LOG_DIR}/error.log"
 TIMEOUT="${AGENT_TIMEOUT:-1800}"  # Default 30 min timeout
 
 # Ensure log directory exists

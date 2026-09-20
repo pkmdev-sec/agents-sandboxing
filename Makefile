@@ -6,16 +6,16 @@ BINARY_NAME := aso
 VERSION := $(shell git describe --tags --always --dirty 2>/dev/null || echo "dev")
 GIT_COMMIT := $(shell git rev-parse --short HEAD 2>/dev/null || echo "unknown")
 BUILD_DATE := $(shell date -u +"%Y-%m-%dT%H:%M:%SZ")
-LDFLAGS := -ldflags "-X github.com/agent-sandbox-orchestrator/aso/internal/cli.Version=$(VERSION) \
-	-X github.com/agent-sandbox-orchestrator/aso/internal/cli.GitCommit=$(GIT_COMMIT) \
-	-X github.com/agent-sandbox-orchestrator/aso/internal/cli.BuildDate=$(BUILD_DATE)"
+LDFLAGS := -ldflags "-X github.com/pkmdev-sec/agents-sandboxing/internal/cli.Version=$(VERSION) \
+	-X github.com/pkmdev-sec/agents-sandboxing/internal/cli.GitCommit=$(GIT_COMMIT) \
+	-X github.com/pkmdev-sec/agents-sandboxing/internal/cli.BuildDate=$(BUILD_DATE)"
 
 # Go settings
 GO := go
 GOFLAGS := -v
 
 # Docker/Container settings
-RUNTIME_IMAGE := ghcr.io/agent-sandbox-orchestrator/agent-runtime
+RUNTIME_IMAGE := ghcr.io/pkmdev-sec/agents-sandboxing-runtime
 RUNTIME_TAG := latest
 
 .PHONY: all build clean test install uninstall deps runtime-image help setup mcp-config

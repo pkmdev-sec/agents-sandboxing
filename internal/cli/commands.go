@@ -5,8 +5,8 @@ import (
 	"os"
 	"text/tabwriter"
 
-	"github.com/agent-sandbox-orchestrator/aso/internal/agent"
-	"github.com/agent-sandbox-orchestrator/aso/internal/container"
+	"github.com/pkmdev-sec/agents-sandboxing/internal/agent"
+	"github.com/pkmdev-sec/agents-sandboxing/internal/container"
 	"github.com/spf13/cobra"
 )
 
@@ -18,8 +18,8 @@ var (
 )
 
 var listCmd = &cobra.Command{
-	Use:   "list",
-	Short: "List running sandboxed agents",
+	Use:     "list",
+	Short:   "List running sandboxed agents",
 	Aliases: []string{"ls"},
 	RunE: func(cmd *cobra.Command, args []string) error {
 		runtime, err := container.NewAppleRuntime()

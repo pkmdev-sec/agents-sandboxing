@@ -1,6 +1,6 @@
 # Build artifacts
 bin/
-aso
+/aso
 *.exe
 
 # Test coverage
@@ -24,3 +24,6 @@ excalidraw.log
 # Temporary files
 *.tmp
 *.bak
+
+# PR Lens writes its previews here. They are rebuilt on demand.
+.pr-lens/

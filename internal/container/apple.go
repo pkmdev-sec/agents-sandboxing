@@ -15,7 +15,7 @@ import (
 
 const (
 	containerBin    = "container"
-	defaultImage    = "ghcr.io/agent-sandbox-orchestrator/agent-runtime:latest"
+	defaultImage    = "ghcr.io/pkmdev-sec/agents-sandboxing-runtime:latest"
 	containerPrefix = "aso-agent-"
 )
 

@@ -6,12 +6,11 @@ import (
 
 var rootCmd = &cobra.Command{
 	Use:   "aso",
-	Short: "Agent Sandbox Orchestrator - Run agents in isolated Apple containers",
+	Short: "Run Claude Code jobs in isolated containers",
 	Long: `ASO (Agent Sandbox Orchestrator) automatically sandboxes AI agents
-in Apple containers for context/token isolation and parallel execution.
+in Docker or Apple containers for process and filesystem isolation.
 
-Each agent runs in its own lightweight VM with dedicated resources,
-preventing token budget conflicts and enabling true parallel execution.`,
+Each agent runs in a separate Claude Code process with bounded CPU and memory.`,
 }
 
 func Execute() error {

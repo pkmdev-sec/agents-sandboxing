@@ -10,8 +10,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/agent-sandbox-orchestrator/aso/internal/agent"
-	"github.com/agent-sandbox-orchestrator/aso/internal/container"
+	"github.com/pkmdev-sec/agents-sandboxing/internal/agent"
+	"github.com/pkmdev-sec/agents-sandboxing/internal/container"
 )
 
 // Server implements an MCP server for agent sandboxing
@@ -173,7 +173,7 @@ func (s *Server) handleToolsList(req jsonRPCRequest) *jsonRPCResponse {
 	tools := []map[string]interface{}{
 		{
 			"name":        "spawn_sandboxed_agent",
-			"description": "Spawn a new agent in an isolated Docker container with its own context and token budget",
+			"description": "Spawn a separate Claude Code process in an isolated container",
 			"inputSchema": map[string]interface{}{
 				"type": "object",
 				"properties": map[string]interface{}{

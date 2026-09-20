@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/agent-sandbox-orchestrator/aso/internal/container"
+	"github.com/pkmdev-sec/agents-sandboxing/internal/container"
 )
 
 // Config holds the configuration for running an agent
@@ -98,7 +98,7 @@ func (r *Runner) Run(ctx context.Context, config Config) (*Result, error) {
 	// Create container config
 	containerConfig := container.CreateConfig{
 		Name:        containerName,
-		Image:       "ghcr.io/agent-sandbox-orchestrator/agent-runtime:latest",
+		Image:       "ghcr.io/pkmdev-sec/agents-sandboxing-runtime:latest",
 		CPUs:        config.Profile.CPUs,
 		Memory:      config.Profile.Memory,
 		Mounts:      mounts,

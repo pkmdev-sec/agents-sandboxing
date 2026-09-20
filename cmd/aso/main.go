@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/agent-sandbox-orchestrator/aso/internal/cli"
+	"github.com/pkmdev-sec/agents-sandboxing/internal/cli"
 )
 
 func main() {

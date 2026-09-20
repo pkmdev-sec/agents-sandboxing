@@ -1,4 +1,4 @@
-module github.com/agent-sandbox-orchestrator/aso
+module github.com/pkmdev-sec/agents-sandboxing
 
 go 1.25.6
 

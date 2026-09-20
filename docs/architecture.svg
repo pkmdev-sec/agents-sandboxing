@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Agent Sandbox Orchestrator architecture</title>
+  <desc id="desc">CLI and MCP requests pass through the runner to Docker or Apple containers. Each container receives a writable workspace, log mount, prompt, timeout, and API key. Results return to the caller and local store.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 10 5 0 10Z" class="arrow"/>
+    </marker>
+    <style>
+      :root { color-scheme: light dark; }
+      .title { font: 700 28px ui-sans-serif, system-ui, sans-serif; fill: #161b22; }
+      .subtitle { font: 400 14px ui-sans-serif, system-ui, sans-serif; fill: #59636e; }
+      .lane { fill: #f6f8fa; stroke: #d0d7de; }
+      .lane-label { font: 650 13px ui-sans-serif, system-ui, sans-serif; fill: #59636e; letter-spacing: 1.5px; }
+      .node { fill: #fff; stroke: #161b22; }
+      .node-accent { fill: #f3f0ff; stroke: #6f42c1; }
+      .runtime { fill: #eef9ff; stroke: #0969da; }
+      .store { fill: #f0fff4; stroke: #1a7f37; }
+      .label { font: 650 16px ui-sans-serif, system-ui, sans-serif; fill: #161b22; }
+      .detail { font: 400 13px ui-sans-serif, system-ui, sans-serif; fill: #59636e; }
+      .edge { fill: none; stroke: #57606a; stroke-width: 2.2; marker-end: url(#arrow); }
+      .hero { stroke: #6f42c1; stroke-width: 3; }
+      .data { stroke: #1a7f37; stroke-dasharray: 7 5; }
+      .arrow { fill: #57606a; }
+      .step { fill: #161b22; }
+      .step-text { font: 700 12px ui-sans-serif, system-ui, sans-serif; fill: #fff; text-anchor: middle; dominant-baseline: central; }
+      .boundary { fill: none; stroke: #8c959f; stroke-width: 1.5; stroke-dasharray: 8 6; }
+      .boundary-label { font: 500 12px ui-sans-serif, system-ui, sans-serif; fill: #6e7781; }
+      @media (prefers-color-scheme: dark) {
+        .title, .label { fill: #e6edf3; }
+        .subtitle, .detail, .lane-label, .boundary-label { fill: #8c959f; }
+        .lane { fill: #0d1117; stroke: #30363d; }
+        .node { fill: #161b22; stroke: #e6edf3; }
+        .node-accent { fill: #211a36; stroke: #a371f7; }
+        .runtime { fill: #0c2d3f; stroke: #58a6ff; }
+        .store { fill: #102b18; stroke: #3fb950; }
+        .edge { stroke: #8c959f; }
+        .hero { stroke: #a371f7; }
+        .data { stroke: #3fb950; }
+        .arrow { fill: #8c959f; }
+        .step { fill: #e6edf3; }
+        .step-text { fill: #0d1117; }
+        .boundary { stroke: #6e7681; }
+      }
+    </style>
+  </defs>
+
+  <text x="48" y="50" class="title">Agent Sandbox Orchestrator</text>
+  <text x="48" y="76" class="subtitle">Request, isolation, and result flow from the current Go implementation</text>
+
+  <rect x="38" y="104" width="245" height="554" rx="16" class="lane"/>
+  <rect x="303" y="104" width="385" height="554" rx="16" class="lane"/>
+  <rect x="708" y="104" width="454" height="554" rx="16" class="lane"/>
+  <text x="58" y="136" class="lane-label">REQUESTS</text>
+  <text x="323" y="136" class="lane-label">HOST ORCHESTRATOR</text>
+  <text x="728" y="136" class="lane-label">ISOLATED RUNTIME</text>
+
+  <rect x="68" y="184" width="185" height="88" rx="12" class="node"/>
+  <text x="160" y="218" class="label" text-anchor="middle">aso CLI</text>
+  <text x="160" y="243" class="detail" text-anchor="middle">spawn command</text>
+  <rect x="68" y="352" width="185" height="88" rx="12" class="node"/>
+  <text x="160" y="386" class="label" text-anchor="middle">MCP client</text>
+  <text x="160" y="411" class="detail" text-anchor="middle">stdio JSON-RPC tools</text>
+
+  <rect x="333" y="168" width="150" height="92" rx="12" class="node"/>
+  <text x="408" y="204" class="label" text-anchor="middle">CLI / server</text>
+  <text x="408" y="229" class="detail" text-anchor="middle">validate request</text>
+  <rect x="513" y="168" width="145" height="92" rx="12" class="node"/>
+  <text x="586" y="204" class="label" text-anchor="middle">Runtime selector</text>
+  <text x="586" y="229" class="detail" text-anchor="middle">Docker, then Apple</text>
+  <rect x="398" y="330" width="195" height="98" rx="12" class="node-accent"/>
+  <text x="496" y="366" class="label" text-anchor="middle">Runner</text>
+  <text x="496" y="391" class="detail" text-anchor="middle">build job config</text>
+  <rect x="398" y="514" width="195" height="96" rx="12" class="store"/>
+  <text x="496" y="549" class="label" text-anchor="middle">Local result store</text>
+  <text x="496" y="574" class="detail" text-anchor="middle">~/.agent-sandboxes</text>
+
+  <rect x="738" y="152" width="394" height="390" rx="18" class="boundary"/>
+  <text x="758" y="178" class="boundary-label">CONTAINER BOUNDARY</text>
+  <rect x="768" y="208" width="150" height="88" rx="12" class="runtime"/>
+  <text x="843" y="243" class="label" text-anchor="middle">Docker</text>
+  <text x="843" y="268" class="detail" text-anchor="middle">docker run --rm</text>
+  <rect x="952" y="208" width="150" height="88" rx="12" class="runtime"/>
+  <text x="1027" y="243" class="label" text-anchor="middle">Apple</text>
+  <text x="1027" y="264" class="detail" text-anchor="middle">adapter</text>
+  <text x="1027" y="282" class="detail" text-anchor="middle">image required</text>
+  <rect x="830" y="350" width="210" height="112" rx="12" class="node-accent"/>
+  <text x="935" y="386" class="label" text-anchor="middle">Claude Code</text>
+  <text x="935" y="411" class="detail" text-anchor="middle">separate process and context</text>
+  <text x="935" y="434" class="detail" text-anchor="middle">prompt + timeout + API key</text>
+
+  <rect x="760" y="574" width="165" height="60" rx="10" class="node"/>
+  <text x="843" y="599" class="label" text-anchor="middle">/workspace</text>
+  <text x="843" y="619" class="detail" text-anchor="middle">project, read-write</text>
+  <rect x="946" y="574" width="165" height="60" rx="10" class="node"/>
+  <text x="1029" y="599" class="label" text-anchor="middle">/var/log/agent</text>
+  <text x="1029" y="619" class="detail" text-anchor="middle">host log mount</text>
+
+  <path d="M253 228H333" class="edge hero"/>
+  <path d="M253 396H306V238H333" class="edge hero"/>
+  <path d="M483 214H513" class="edge hero"/>
+  <path d="M586 260V300H496V330" class="edge"/>
+  <path d="M593 379H704V252H768" class="edge"/>
+  <path d="M593 379H704V188H1027V208" class="edge"/>
+  <path d="M843 296V324H902V350" class="edge"/>
+  <path d="M1027 296V324H968V350" class="edge"/>
+  <path d="M842 574V500H900V462" class="edge"/>
+  <path d="M1029 574V500H970V462" class="edge"/>
+  <path d="M830 430H674V562H593" class="edge data"/>
+  <path d="M398 562H318V440H253" class="edge data"/>
+  <path d="M318 440V272H253" class="edge data"/>
+
+  <g><circle cx="292" cy="228" r="13" class="step"/><text x="292" y="228" class="step-text">1</text></g>
+  <g><circle cx="499" cy="214" r="13" class="step"/><text x="499" y="214" class="step-text">2</text></g>
+  <g><circle cx="657" cy="379" r="13" class="step"/><text x="657" y="379" class="step-text">3</text></g>
+  <g><circle cx="935" cy="324" r="13" class="step"/><text x="935" y="324" class="step-text">4</text></g>
+  <g><circle cx="675" cy="524" r="13" class="step"/><text x="675" y="524" class="step-text">5</text></g>
+  <g><circle cx="318" cy="562" r="13" class="step"/><text x="318" y="562" class="step-text">6</text></g>
+</svg>

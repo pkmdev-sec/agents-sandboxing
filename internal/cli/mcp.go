@@ -7,7 +7,7 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/agent-sandbox-orchestrator/aso/internal/mcp"
+	"github.com/pkmdev-sec/agents-sandboxing/internal/mcp"
 	"github.com/spf13/cobra"
 )
 
